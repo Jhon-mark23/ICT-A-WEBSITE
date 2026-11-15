@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta name="description" content="Explore website projects created by ICT students at PWU CDCEC Santa Cruz.">
+  <title>ICT Student Projects | PWU CDCEC Santa Cruz</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #242720;
+      background: #f7f5f0;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      display: flex;
+      min-height: 76px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px max(24px, calc((100% - 1120px) / 2));
+      border-bottom: 1px solid #e8e4da;
+      background: rgb(255 255 255 / 78%);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      font-weight: 720;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    .header-note {
+      color: #6b7066;
+      font-size: 0.84rem;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(72px, 11vw, 130px) 24px clamp(78px, 10vw, 118px);
+      background:
+        radial-gradient(ellipse at 82% 18%, rgb(200 169 111 / 22%), transparent 32%),
+        radial-gradient(ellipse at 5% 100%, rgb(116 139 98 / 22%), transparent 42%),
+        #202b25;
+      color: #fffdf6;
+      text-align: center;
+    }
+
+    .hero::after {
+      position: absolute;
+      right: -9%;
+      bottom: -180px;
+      width: min(520px, 60vw);
+      height: 270px;
+      border: 1px solid rgb(255 255 255 / 12%);
+      border-radius: 50%;
+      content: "";
+      transform: rotate(-17deg);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 760px);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: #d6bd8b;
+      font-size: 0.76rem;
+      font-weight: 760;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 690;
+      letter-spacing: -0.065em;
+      line-height: 1.02;
+    }
+
+    .hero-copy {
+      max-width: 590px;
+      margin: 22px auto 0;
+      color: #d6ddd4;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.75;
+    }
+
+    .projects-section {
+      width: min(100% - 40px, 1120px);
+      margin: 0 auto;
+      padding: 76px 0 90px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-heading p {
+      margin: 0 0 8px;
+      color: #77806d;
+      font-size: 0.75rem;
+      font-weight: 760;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.45rem);
+      letter-spacing: -0.045em;
+    }
+
+    .section-description {
+      max-width: 380px;
+      margin: 0;
+      color: #70756c;
+      font-size: 0.96rem;
+      line-height: 1.65;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      border: 1px solid #e7e3d9;
+      border-radius: 18px;
+      background: #fffefa;
+      box-shadow: 0 12px 34px rgb(42 46 36 / 6%);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 42px rgb(42 46 36 / 11%);
+    }
+
+    .project-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-bottom: 1px solid #e7e3d9;
+      background: #e7e9df;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .project-info {
+      padding: 23px 24px 24px;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .group-label {
+      color: #687554;
+      font-size: 0.75rem;
+      font-weight: 760;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .project-tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f0eee6;
+      color: #69705f;
+      font-size: 0.72rem;
+      font-weight: 650;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1.32rem;
+      letter-spacing: -0.025em;
+      line-height: 1.35;
+    }
+
+    .project-description {
+      min-height: 48px;
+      margin: 10px 0 20px;
+      color: #70756c;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .project-link {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      gap: 10px;
+      padding: 0 15px;
+      border-radius: 8px;
+      background: #344b3b;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 680;
+      text-decoration: none;
+      transition: background-color 150ms ease;
+    }
+
+    .project-link:hover {
+      background: #263b2d;
+    }
+
+    .project-link:focus-visible,
+    .brand:focus-visible {
+      outline: 3px solid #b28b4d;
+      outline-offset: 4px;
+    }
+
+    .project-link span {
+      font-size: 1.1rem;
+    }
+
+    .site-footer {
+      padding: 24px;
+      border-top: 1px solid #e8e4da;
+      color: #777b71;
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    @media (max-width: 680px) {
+      .site-header {
+        min-height: 68px;
+      }
+
+      .header-note {
+        display: none;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-description {
+        min-height: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="ICT Student Projects home">
+      <img src="assets/Philippine_Womens_University.png" alt="">
+      <span>PWU CDCEC Santa Cruz</span>
+    </a>
+    <span class="header-note">Student work · Web projects</span>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-content">
+        <p class="eyebrow">ICT Student Showcase</p>
+        <h1 id="page-title">Ideas made<br>into websites.</h1>
+        <p class="hero-copy">
+          Explore website projects created by ICT students. Each project is a chance to learn,
+          experiment, and share something with the community.
+        </p>
+      </div>
+    </section>
+
+    <section class="projects-section" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <div>
+          <p>Student projects</p>
+          <h2 id="projects-title">Explore the work</h2>
+        </div>
+        <p class="section-description">
+          Browse each group’s website and see what they have created.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <img
+            class="project-image"
+            src="assets/PWUpdate_pr2g1.png"
+            alt="Preview of the PWUpdate website by PR2 Group 1"
+            loading="lazy"
+            decoding="async">
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="group-label">PR2 · Group 1</span>
+              <span class="project-tag">Student website</span>
+            </div>
+            <h3>PWUpdate</h3>
+            <p class="project-description">
+              A student website project created by PR2 Group 1.
+            </p>
+            <a class="project-link" href="https://ict-a-pr2g1.free.je/" target="_blank" rel="noopener noreferrer">
+              Visit website <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img
+            class="project-image"
+            src="assets/DiscoverSta_Cruz_pr2g6.png"
+            alt="Preview of the Discover Santa Cruz, Laguna website by PR2 Group 6"
+            loading="lazy"
+            decoding="async">
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="group-label">PR2 · Group 6</span>
+              <span class="project-tag">Student website</span>
+            </div>
+            <h3>Discover Sta. Cruz, Laguna</h3>
+            <p class="project-description">
+              A local discovery website created by PR2 Group 6.
+            </p>
+            <a class="project-link" href="https://discover-stacruz.ict-a.site/" target="_blank" rel="noopener noreferrer">
+              Visit website <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    ICT Student Website Projects · PWU CDCEC Santa Cruz
+  </footer>
+</body>
+</html>
